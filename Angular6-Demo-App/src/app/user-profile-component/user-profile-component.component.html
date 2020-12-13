@@ -1,3 +1,155 @@
-<p>
-  user-profile-component works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navigation-bar">
+    <div class="container">
+        <a class="navbar-brand" href="#">DEMO APP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link navigation-menu" routerLink="/home">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navigation-menu" href="#">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navigation-menu" href="#">JOBS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navigation-menu" href="#">CLIENTS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navigation-menu" href="#">EMPLOYEES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navigation-menu" href="#">CONTACT US</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="vertically-center">
+    <div class="container">
+        <div class="col-12">
+            <h4 style="color:#3090C7 ;">Profile</h4>
+        </div>
+        <div class="row col-12 margin-class">
+            <div class="col-3">
+                <img src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="profile" class="profile-photo">
+                <div class="row ">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-warning edit-btn">Edit photo</button>
+
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-warning edit-btn" (click)="onEditProfile()" data-toggle="modal" data-target="#exampleModalCenter">Edit Profile</button>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6">
+                I'm {{firstname}} {{lastname}} and I'm above {{age}} years and you can send your emails to
+                <a href="mailto:{{email}}">{{email}}</a> live in the {{state}} of {{country}}. I like to {{like}}.<span *ngIf="subscribe">And please send me newsletters.</span>Please reach out to me at {{contact}}.
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg modal-border" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #3090C7;color: white; font-weight: 600;">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background-color: #659EC7;color: white;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                                </button>
+            </div>
+            <div class="modal-body">
+                <form class="row" [formGroup]="profileForm" (ngSubmit)="onSubmit()" style="color: #495057; font-size: 15px;">
+                    <div class="col-3 form-padding-top pl-4 image-upload">
+                        <label for="file-input">
+                                <img src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="profile" width="125" height="125">
+                            </label>
+                        <input id="file-input" type="file" (change)="onSelect($event)" />
+                        <span style="color: #3090C7;">Upload your photo</span>
+                    </div>
+                    <div class="col-8 form-padding-top">
+                        <div class="row ">
+                            <div class="col">
+                                <input type="text" class="form-control" formControlName="firstName" pattern="[a-z]{1,20}" placeholder="First name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="form-padding-top">
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-padding-top">
+                            <input type="tel" class="form-control" formControlName="contactNo" placeholder="Contact Number">
+                        </div>
+                        <div class="row form-padding-top">
+                            <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+                            <div class="col-sm-10">
+                                <ng5-slider formControlName="age" [options]="options"></ng5-slider>
+                            </div>
+                        </div>
+                        <div class="form-padding-top">
+                            <select class="form-control" formControlName="state">
+                                                <option disabled [selected]= "true">State</option>
+                                                <option>Maharashtra</option>
+                                                <option>Gujarat</option>
+                                                <option>Karnataka</option>
+                                                </select>
+                        </div>
+                        <div class="form-padding-top">
+                            <select class="form-control" formControlName="country">
+                                                <option disabled [selected]= "true">Country</option>
+                                                <option>India</option>
+                                                <option>Shri-Lanka</option>
+                                                <option>China</option>
+                                                </select>
+                        </div>
+                        <div class="form-padding-top">
+                            <select class="form-control" formControlName="addressType" (change)="onEditClick($event.target.value)">
+                                    <option disabled [selected]= "true">Home / Comapny Addrees</option>
+                                    <option>Home</option>
+                                    <option>Company</option>
+                                    </select>
+                        </div>
+                        <div class="form-padding-top" *ngIf="home">
+                            <input type="text" class="form-control" formControlName="address1" placeholder="Address 1">
+                        </div>
+                        <div class="form-padding-top" *ngIf="home">
+                            <input type="text" class="form-control" formControlName="address2" placeholder="Address 2">
+                        </div>
+                        <div class="form-padding-top" *ngIf="company">
+                            <input type="text" class="form-control" formControlName="company1" placeholder="Company Address 1">
+                        </div>
+                        <div class="form-padding-top" *ngIf="company">
+                            <input type="text" class="form-control" formControlName="company2" placeholder="Company Address 2">
+                        </div>
+
+                        <div class="form-padding-top">
+                            <input type="text" class="form-control" formControlName="like" placeholder="Like to">
+                        </div>
+                        <div class="form-padding-top">
+                            <input type="checkbox" formControlName="subscribe"> &nbsp;subcribe to newsletter
+                        </div>
+                        <div class="row form-padding-top">
+                            <div class="col-sm-12 text-right">
+                                <button class="btn btn-light border px-4" type="reset" data-toggle="modal" data-target="#exampleModalCenter">Cancel</button>
+                                <button class="btn px-4 ml-3 btn-primary pull-right" type="submit" [disabled]="!profileForm.valid" name="submit">Submit</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

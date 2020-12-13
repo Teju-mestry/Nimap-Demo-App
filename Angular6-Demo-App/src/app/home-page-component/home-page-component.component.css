@@ -1,77 +1,88 @@
-.navigation-bar{
+.navigation-bar {
     padding-top: 5%;
 }
 
-.carousel { z-index: -99; } /* keeps this behind all content */
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.carousel {
+    z-index: -99;
+}
+
+
+/* keeps this behind all content */
 
 .carousel-indicators li {
     width: 10px;
     height: 10px;
     border-radius: 100%;
-  }
+}
 
-  .background-image{
-      opacity: 0.5;
-      position:relative ;
-  }
-  .vertically-center{
+.background-image {
+    opacity: 0.5;
+    position: relative;
+}
+
+.vertically-center {
     min-height: 140%;
     display: flex;
     align-items: center;
     position: absolute;
     top: 0;
     min-width: 100%;
-  }
-  .search-heading{
+}
+
+.search-heading {
     font-style: italic;
     color: white;
     font-weight: 600;
-  }
- 
-  .register-btn{
+}
+
+.register-btn {
     border-radius: 0;
     border-bottom: 3px solid #186b78;
     margin-top: 55px;
-  }
+}
 
-  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
     color: white;
     border-top: 3px solid #17a2b8;
 }
 
-.upper-margin{
-  margin-top: 30px;
+.upper-margin {
+    margin-top: 30px;
 }
 
-::-webkit-input-placeholder {
-  font-style: italic;
-}
-:-moz-placeholder {
-  font-style: italic;  
-}
-::-moz-placeholder {
-  font-style: italic;  
-}
-:-ms-input-placeholder {  
-  font-style: italic; 
-}
-.search-btn{
-  float: right;
-  border-radius: 0;
-  border-bottom: 3px solid #186b78;
-  font-style: italic;
-  
-}
-.search-input{
-  border-radius: 0;
-  border-bottom: 3px solid #ced4da;
+.search-input:not(:focus) {
+    font-style: italic;
 }
 
+.search-btn {
+    float: right;
+    border-radius: 0;
+    border-bottom: 3px solid #186b78;
+    font-style: italic;
+}
 
+.search-input {
+    border-radius: 0;
+    border-bottom: 3px solid #ced4da;
+}
 
-.modal-header .close{
-  padding: 5px 10px;
-  border-radius: 50%;
-  margin: -2px 0rem -1rem auto;
+.modal-header .close {
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin: -2px 0rem -1rem auto;
+}
 
+.form-padding-top {
+    padding-top: 15px;
+}
+
+.image-upload>input {
+    display: none;
 }
