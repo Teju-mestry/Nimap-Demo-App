@@ -1,0 +1,197 @@
+<div class="main-content">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100 background-image" src="https://cutewallpaper.org/21/work-wallpaper/Work-Wallpaper-Hd-Download-Wallpaper-Laptop-HD.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100 background-image" src="https://cutewallpaper.org/21/work-wallpaper/Work-Wallpaper-Hd-Download-Wallpaper-Laptop-HD.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100 background-image" src="https://cutewallpaper.org/21/work-wallpaper/Work-Wallpaper-Hd-Download-Wallpaper-Laptop-HD.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item ">
+                <img class="d-block w-100 background-image" src="https://cutewallpaper.org/21/work-wallpaper/Work-Wallpaper-Hd-Download-Wallpaper-Laptop-HD.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navigation-bar">
+        <div class="container">
+            <a class="navbar-brand" href="#">DEMO APP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link navigation-menu" routerLink="/home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navigation-menu" href="#">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navigation-menu" href="#">JOBS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navigation-menu" href="#">CLIENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navigation-menu" href="#">EMPLOYEES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navigation-menu" href="#">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="vertically-center">
+        <div class="container">
+            <h2 class="search-heading">I'm looking for..</h2>
+            <div class="row upper-margin">
+                <div class="col-8">
+                    <input class="form-control search-input" type="text" placeholder="Enter a Job Description">
+                    <div class="row upper-margin">
+                        <div class="col-8" style="color: white;font-style:italic;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label" for="inlineCheckbox1">Full Time</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <label class="form-check-label" for="inlineCheckbox2">Part Time/ Freelancer</label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-info search-btn">
+                        <i class="fa fa-search" aria-hidden="true"></i>Search</button>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="p-2 bd-highlight col-example">
+                    <button type="button" class="btn btn-info register-btn" data-toggle="modal" data-target="#exampleModalCenter">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg modal-border" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #3090C7;color: white; font-weight: 600;">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background-color: #659EC7;color: white;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                                </button>
+                </div>
+                <div class="modal-body">
+                    <form class="row" [formGroup]="profileForm" style="color: #495057; font-size: 15px;">
+                        <div class="col-3 form-padding-top pl-4 image-upload">
+                            <label for="file-input">
+                                <img src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="profile" width="125" height="125">
+                            </label>
+                            <input id="file-input" type="file" (change)="onSelect($event)" />
+                            <span style="color: #3090C7;">Upload your photo</span>
+                        </div>
+                        <div class="col-8 form-padding-top">
+                            <div class="row ">
+                                <div class="col">
+                                    <input type="text" class="form-control" formControlName="firstName" pattern="[A-Za-z]{1,20}" placeholder="First name">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" formControlName="lastName" placeholder="Last name">
+                                </div>
+                            </div>
+                            <div class="form-padding-top">
+                                <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                            </div>
+                            <div class="form-padding-top">
+                                <input type="tel" class="form-control" formControlName="contactNo" placeholder="Contact Number">
+                            </div>
+                            <div class="row form-padding-top">
+                                <label for="inputAge" class="col-sm-2 col-form-label">Age</label>
+                                <div class="col-sm-10">
+                                    <ng5-slider formControlName="age" [options]="options"></ng5-slider>
+                                </div>
+                            </div>
+                            <div class="form-padding-top">
+                                <select class="form-control" formControlName="state">
+                                                <option disabled [selected]= "true">State</option>
+                                                <option>Maharashtra</option>
+                                                <option>Gujarat</option>
+                                                <option>Karnataka</option>
+                                                </select>
+                            </div>
+                            <div class="form-padding-top">
+                                <select class="form-control" formControlName="country">
+                                                <option disabled [selected]= "true">Country</option>
+                                                <option>India</option>
+                                                <option>Shri-Lanka</option>
+                                                <option>China</option>
+                                                </select>
+                            </div>
+                            <div class="form-padding-top">
+                                <select class="form-control" formControlName="addressType" (change)="onEditClick($event.target.value)">
+                                    <option disabled [selected]= "true">Home / Comapny Addrees</option>
+                                    <option>Home</option>
+                                    <option>Company</option>
+                                    </select>
+                            </div>
+                            <div class="form-padding-top" *ngIf="home">
+                                <input type="text" class="form-control" formControlName="address1" placeholder="Address 1">
+                            </div>
+                            <div class="form-padding-top" *ngIf="home">
+                                <input type="text" class="form-control" formControlName="address2" placeholder="Address 2">
+                            </div>
+                            <div class="form-padding-top" *ngIf="company">
+                                <input type="text" class="form-control" formControlName="company1" placeholder="Company Address 1">
+                            </div>
+                            <div class="form-padding-top" *ngIf="company">
+                                <input type="text" class="form-control" formControlName="company2" placeholder="Company Address 2">
+                            </div>
+
+                            <div class="form-padding-top">
+                                <input type="text" class="form-control" #input placeholder="Interested in" (keyup.enter)="addInterest(input.value);input.value=''">
+                                <div class="row">
+                                    <div class="tag-class" *ngFor='let inte of interestList; let i=index'>
+                                        <h6 style="color: white;"> {{inte}}<span type="button" (click)="removeInterest(i)"><i class="fa fa-close" style="color: yellow;" aria-hidden="true"></i></span>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-padding-top">
+                                <input type="checkbox" formControlName="subscribe"> &nbsp;subcribe to newsletter
+                            </div>
+                            <div class="row form-padding-top">
+                                <div class="col-sm-12 text-right">
+                                    <button class="btn btn-light border px-4" type="reset" data-toggle="modal" data-target="#exampleModalCenter">Cancel</button>
+                                    <button class="btn px-4 ml-3 btn-primary pull-right" type="button" (click)="onSubmit()" [disabled]="!profileForm.valid" name="submit">Submit</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
