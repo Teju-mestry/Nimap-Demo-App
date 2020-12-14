@@ -1,3 +1,4 @@
+import { FormArray } from "@angular/forms";
 
 export class Users
 {
@@ -14,11 +15,11 @@ export class Users
             address2: string;
             company1: string;
             company2: string;
-            like: string;
+            interestList: Array<string>;
             subscribe: boolean;
             profilePhoto:File;
 
-            constructor(id,firstname,lastname,email,contact,age,state,country,addresstype,address1,address2,company1,company2,like,subscribe,profilePhoto){
+            constructor(id,firstname,lastname,email,contact,age,state,country,addresstype,address1,address2,company1,company2,interestList,subscribe,profilePhoto){
                 this.id = id;
                 this.firstname = firstname;
                 this.lastname = lastname;
@@ -32,7 +33,7 @@ export class Users
                 this.address2 = address2;
                 this.company1 = company1;
                 this.company2 = company2;
-                this.like = like;
+                this.interestList = interestList;
                 this.subscribe = subscribe;
                 this.profilePhoto = profilePhoto;
             }

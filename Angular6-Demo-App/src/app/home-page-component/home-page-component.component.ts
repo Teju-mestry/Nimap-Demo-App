@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Options } from 'ng5-slider';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormArray, AbstractControl } from '@angular/forms';
 import { RestService } from '../service/rest.service';
 import { Users } from '../Users';
 import {  Router } from '@angular/router';
@@ -25,6 +25,7 @@ export class HomePageComponentComponent implements OnInit {
   home = false;
   company = false;
   usersCount : number;
+  interestList: Array<string> = [];
 
   constructor(private formBuilder: FormBuilder,private rs: RestService,public router: Router) { }
 
@@ -45,7 +46,7 @@ export class HomePageComponentComponent implements OnInit {
     address2: [''],
     company1: [''],
     company2: [''],
-    like: ['', Validators.required],
+    interestList: [this.interestList],
     profilePhoto: ['',Validators.required],
     subscribe: [false]
 
@@ -80,7 +81,7 @@ this.rs.getUsers().subscribe((res)=>{
       address2:this.profileForm.value.address2,
       company1:this.profileForm.value.company1,
       company2:this.profileForm.value.company2,
-      like: this.profileForm.value.like,
+      interestList: this.interestList,
       subscribe: this.profileForm.value.subscribe,
       profilePhoto: this.profileForm.value.profilePhoto
 
@@ -99,6 +100,19 @@ this.rs.getUsers().subscribe((res)=>{
 
 
 
+}
+
+
+addInterest(value){
+
+this.interestList.push(value);
+console.log(this.interestList);
+
+}
+removeInterest(index:number){
+  if (index !== -1) {
+      this.interestList.splice(index, 1);
+  }  
 }
 
 

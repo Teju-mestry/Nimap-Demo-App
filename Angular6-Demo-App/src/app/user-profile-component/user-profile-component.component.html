@@ -51,7 +51,7 @@
             <div class="col-1"></div>
             <div class="col-6">
                 I'm {{firstname}} {{lastname}} and I'm above {{age}} years and you can send your emails to
-                <a href="mailto:{{email}}">{{email}}</a> live in the {{state}} of {{country}}. I like to {{like}}.<span *ngIf="subscribe">And please send me newsletters.</span>Please reach out to me at {{contact}}.
+                <a href="mailto:{{email}}">{{email}}</a> live in the {{state}} of {{country}}. I am interested in {{interestList}}.<span *ngIf="subscribe">And please send me newsletters.</span>Please reach out to me at {{contact}}.
             </div>
             <div class="col-2"></div>
         </div>
@@ -69,7 +69,7 @@
                                 </button>
             </div>
             <div class="modal-body">
-                <form class="row" [formGroup]="profileForm" (ngSubmit)="onSubmit()" style="color: #495057; font-size: 15px;">
+                <form class="row" [formGroup]="profileForm" style="color: #495057; font-size: 15px;">
                     <div class="col-3 form-padding-top pl-4 image-upload">
                         <label for="file-input">
                                 <img src="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" alt="profile" width="125" height="125">
@@ -135,15 +135,22 @@
                         </div>
 
                         <div class="form-padding-top">
-                            <input type="text" class="form-control" formControlName="like" placeholder="Like to">
+                            <input type="text" class="form-control" #input placeholder="Interested in" (keyup.enter)="addInterest(input.value);input.value=''">
+                            <div class="row col-12">
+                                <div class="tag-class" *ngFor='let inte of interestList; let i=index'>
+                                    <h6 style="color: white;"> {{inte}}<span type="button" (click)="removeInterest(i)"><i class="fa fa-close" style="color: yellow;" aria-hidden="true"></i></span>
+                                    </h6>
+                                </div>
+                            </div>
                         </div>
+
                         <div class="form-padding-top">
                             <input type="checkbox" formControlName="subscribe"> &nbsp;subcribe to newsletter
                         </div>
                         <div class="row form-padding-top">
                             <div class="col-sm-12 text-right">
                                 <button class="btn btn-light border px-4" type="reset" data-toggle="modal" data-target="#exampleModalCenter">Cancel</button>
-                                <button class="btn px-4 ml-3 btn-primary pull-right" type="submit" [disabled]="!profileForm.valid" name="submit">Submit</button>
+                                <button class="btn px-4 ml-3 btn-primary pull-right" type="button" (click)="onSubmit()" [disabled]="!profileForm.valid" name="submit">Submit</button>
                             </div>
                         </div>
 

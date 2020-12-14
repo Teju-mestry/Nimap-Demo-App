@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../service/rest.service';
 import { Options } from 'ng5-slider';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Users } from '../Users';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -38,14 +38,14 @@ export class UserProfileComponentComponent implements OnInit {
   address2: string;
   company1: string;
   company2: string;
-  like: string;
+  interestList: Array<string>;
   subscribe: boolean;
   profilePhoto:File;
   id: number;
+  interest: string;
 
   constructor(private rs : RestService,private formBuilder: FormBuilder,public router: Router, public route: ActivatedRoute) { }
 
-  
 
   ngOnInit():void {
 
@@ -74,7 +74,7 @@ export class UserProfileComponentComponent implements OnInit {
        this.address2 =  res.address2;
        this.company1 = res.company1;
        this.company2 = res.company2;
-       this.like= res.like ;
+       this.interestList= res.interestList ;
        this.subscribe = res.subscribe;
        this.profilePhoto = res.profilePhoto;
 
@@ -94,7 +94,7 @@ export class UserProfileComponentComponent implements OnInit {
       address2: [''],
       company1: [''],
       company2: [''],
-      like: ['', Validators.required],
+      interestList: [this.interestList],
       profilePhoto: ['',Validators.required],
       subscribe: [false]
   
@@ -118,8 +118,8 @@ export class UserProfileComponentComponent implements OnInit {
       address2: this.address2,
       company1: this.company1,
       company2: this.company2,
-      like: this.like,
-      profilePhoto: "",
+      interestList: this.interestList,
+      profilePhoto: this.profilePhoto,
       subscribe: this.subscribe
     })
 
@@ -149,7 +149,7 @@ export class UserProfileComponentComponent implements OnInit {
       address2:this.profileForm.value.address2,
       company1:this.profileForm.value.company1,
       company2:this.profileForm.value.company2,
-      like: this.profileForm.value.like,
+      interestList: this.interestList,
       subscribe: this.profileForm.value.subscribe,
       profilePhoto: this.profileForm.value.profilePhoto
 
@@ -170,6 +170,18 @@ export class UserProfileComponentComponent implements OnInit {
 
 
 }
+
+addInterest(value){
+
+  this.interestList.push(value);
+  console.log(this.interestList);
+  
+  }
+  removeInterest(index:number){
+    if (index !== -1) {
+        this.interestList.splice(index, 1);
+    }  
+  }
 
   onSelect(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
